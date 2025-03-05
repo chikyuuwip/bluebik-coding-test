@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-
 
 class Q1_FindMostCommonWord
 {
@@ -11,9 +9,12 @@ class Q1_FindMostCommonWord
     {
         Console.Write("Enter Common Word : ");
         var commonWord = Console.ReadLine();
-        if (commonWord != null)
+        if (!string.IsNullOrWhiteSpace(commonWord))
         {
             FindMostCommonWord(commonWord);
+        }
+        else {
+            Console.WriteLine("Input is empty");
         }
     }
     public static void FindMostCommonWord(string text)
@@ -27,8 +28,15 @@ class Q1_FindMostCommonWord
             else
                 wordsDic[word] = 1;
         }
-        var most = wordsDic.OrderByDescending(x => x.Value).FirstOrDefault();
-        System.Console.WriteLine("Found \"{0}\" {1} time(s)", most.Key, most.Value);
+        if (wordsDic.Any())
+        {
+            var mostWord = wordsDic.OrderByDescending(x => x.Value).FirstOrDefault();
+            System.Console.WriteLine("Found \"{0}\" {1} time(s)", mostWord.Key, mostWord.Value);
+        }
+        else
+        {
+            Console.WriteLine("Words not valid");
+        }
 
     }
 }

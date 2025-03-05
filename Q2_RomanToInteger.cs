@@ -13,6 +13,12 @@ class Q2_RomanToInteger
     }
     public static int RomanToInteger(string roman)
     {
+        if (string.IsNullOrWhiteSpace(roman) || !roman.All(c => "IVXLCDM".Contains(Char.ToUpper(c))))
+        {
+            Console.WriteLine("Invalid Roman");
+            return -1;
+        }
+
         var romanNumerals = new Dictionary<char, int>
         { {'I' , 1},
           {'V' , 5},

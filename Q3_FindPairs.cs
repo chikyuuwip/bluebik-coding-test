@@ -21,7 +21,7 @@ class Q3_FindPairs
             if (read.Contains(find))
             {
                 pairs.Add((find, num));
-                read.Remove(num);
+                read.Remove(find);
             }
             else
             {
